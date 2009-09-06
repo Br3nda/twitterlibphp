@@ -482,6 +482,8 @@ class Twitter extends TwitterBase {
 	 * @var string
 	 */
 	var $credentials;
+        
+        var $api_base = 'http://twitter.com/';
 
 	/**
 	 * Fills in the credentials {@link $credentials} and the application source {@link $application_source}.
@@ -505,7 +507,7 @@ class Twitter extends TwitterBase {
 	 */
 	protected function apiCall($twitter_method, $http_method, $format, $options, $require_credentials = true) {
 		$curl_handle = curl_init();
-    $api_url = sprintf('http://twitter.com/%s.%s', $twitter_method, $format);
+    $api_url = sprintf($this->api_base .'%s.%s', $twitter_method, $format);
     if (($http_method == 'get') && (count($options) > 0)) {
       $api_url .= '?' . http_build_query($options);
     }
