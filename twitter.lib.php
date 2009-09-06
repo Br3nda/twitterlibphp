@@ -495,6 +495,10 @@ class Twitter extends TwitterBase {
 		$this->credentials = sprintf("%s:%s", $username, $password);
 		$this->application_source = $source;
 	}
+        
+        function setApiBase($api_base) {
+            $this->api_base = $api_base;
+        }
 
 	/**
 	 * Executes an API call
