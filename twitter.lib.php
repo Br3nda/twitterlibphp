@@ -529,6 +529,9 @@ class Twitter extends TwitterBase {
 		$twitter_data = curl_exec($curl_handle);
 		$this->http_status = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
 		$this->last_api_call = $api_url;
+                if (! ($this->http_status >= 200 && $this->http_status < 400) ) {
+                    return false;
+                }                
 		curl_close($curl_handle);
 		return $twitter_data;
 	}
